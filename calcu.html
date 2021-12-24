@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>
+  Calculator
+ </title>
+ <link rel = "stylesheet" type = "text/css" href = "style_of_calculator.css">
+</head>
+<body>
+ <h1>WC Calculator</h1>
+ <form action="#">
+ <h3>Number 1</h3>
+ <input id = "number1">
+ <h3>Number 2</h3>
+ <input id = "number2">
+ <h3>Operate way</h3>
+ <select id = "list" onchange = "setButton(this.value)">
+  <option value = "plus">+</option>
+  <option value = "minus">-</option>
+  <option value = "product">*</option>
+  <option value = "divide">÷</option>
+ </select>
+ <input type = "button" id = "btn" value = "Add" onclick = "calculate()">
+ </form>
+ <div id = "result">
+  <div>Result</div>
+ </div>
+
+ <script type="text/javascript">
+  var operator = document.getElementById("list");
+  var answer;
+  
+  function calculate(){
+   var first = parseInt(document.getElementById("number1").value);
+   var second = parseInt(document.getElementById("number2").value);
+   if(operator.value == "plus"){
+    answer = first + second;
+    output();
+   }
+   else if(operator.value == "minus"){
+    answer = first - second;
+    output();
+   }
+   else if(operator.value == "product"){
+    answer = first * second;
+    output();
+   }
+   else if(operator.value == "divide"){
+    answer = first / second;
+    output();
+   }
+  }
+
+  function output(){
+   var newLine = document.createElement('div');
+   var textNode = document.createTextNode(answer);
+   newLine.appendChild(textNode);
+   document.getElementById('result').appendChild(newLine);
+  }
+
+  function setButton(val){
+   var button = document.getElementById('btn');
+
+   if(val == "plus"){
+    button.value = "Add";
+   }
+   else if(val == "minus"){
+    button.value = "Minus";
+   }
+   else if(val == "product"){
+    button.value = "Product";
+   }
+   else if(val == "divide"){
+    button.value = "Divide";
+   }
+  }
+
+ </script>
+</body>
+</html>
